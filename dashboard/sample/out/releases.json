@@ -1,0 +1,34 @@
+[
+ {
+  "track": "example-app",
+  "app": "Example App",
+  "platform": "",
+  "repo": "example-app",
+  "live_version": "main",
+  "live_state": "live",
+  "live_source": "GitHub: a merge to main is the release",
+  "live_since": "",
+  "live_note": "",
+  "next_version": "",
+  "next_stage": "Nothing to wait for: the next merge ships",
+  "later": "",
+  "unreleased": 0,
+  "checked_at": "2026-11-18T09:01:30Z"
+ },
+ {
+  "track": "example-web",
+  "app": "Example Website",
+  "platform": "Web",
+  "repo": "example-web",
+  "live_version": "main",
+  "live_state": "live",
+  "live_source": "GitHub: a merge to main is the release",
+  "live_since": "",
+  "live_note": "",
+  "next_version": "",
+  "next_stage": "Nothing to wait for: the next merge ships",
+  "later": "",
+  "unreleased": 0,
+  "checked_at": "2026-11-18T09:01:30Z"
+ }
+]

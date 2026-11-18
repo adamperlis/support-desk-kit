@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="desk-name" content="{{DESK_NAME}}">
+  <meta name="desk-location" content="{{DESK_LOCATION}}">
+  <title>Sign in · {{DESK_NAME}}</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/login.css">
+  <script src="/static/theme.js"></script>
+  <script type="importmap" nonce="{{CSP_NONCE}}">{"imports":{"three":"/static/vendor/three-0.186.1/three.webgpu.min.js","three/webgpu":"/static/vendor/three-0.186.1/three.webgpu.min.js","three/tsl":"/static/vendor/three-0.186.1/three.tsl.min.js"}}</script>
+  <script src="/static/login.js" defer></script>
+</head>
+<body data-mode="{{AUTH_MODE}}">
+  <main class="login-card" aria-labelledby="login-title">
+    <p class="brand">{{DESK_NAME}}</p>
+    <desk-bot class="mascot" name="login" size="112" view="front" fallback="/static/bot-still.png" aria-label="Your desk companion">
+      <img src="/static/bot-still.png" width="112" height="112" alt="">
+    </desk-bot>
+    <h1 id="login-title">Welcome back.</h1>
+    <p id="login-description">Sign in to your private support desk.</p>
+    <form id="login-form" method="post" action="/auth/login">
+      <label for="password">Password</label>
+      <div class="password-field">
+        <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256" autofocus>
+        <button id="show-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+      </div>
+      <div id="confirmation-field" hidden>
+        <label for="confirmation">Confirm password</label>
+        <input id="confirmation" name="confirmation" type="password" autocomplete="new-password" maxlength="256">
+      </div>
+      <label class="remember"><input id="remember" name="remember" type="checkbox">Remember this device for 30 days</label>
+      <p id="login-error" role="alert" hidden></p>
+      <button id="submit" class="primary" type="submit">Sign in</button>
+    </form>
+    <p class="private-note">Your conversations and actions stay behind this login.</p>
+    <noscript><p>Enable JavaScript to sign in to the {{DESK_NAME}}.</p></noscript>
+  </main>
+  <script src="/static/bot-appearance.js"></script>
+  <script src="/static/bot.js"></script>
+</body>
+</html>

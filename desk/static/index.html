@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="desk-token" content="{{TOKEN}}">
+<meta name="desk-name" content="{{DESK_NAME}}">
+<meta name="desk-location" content="{{DESK_LOCATION}}">
+<title>{{DESK_NAME}}</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<script src="/static/theme.js"></script>
+<script type="importmap">{"imports": {"three": "/static/vendor/three-0.186.1/three.webgpu.min.js", "three/webgpu": "/static/vendor/three-0.186.1/three.webgpu.min.js", "three/tsl": "/static/vendor/three-0.186.1/three.tsl.min.js"}}</script>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/vendor/dialkit-2.1.0/styles.css">
+<link rel="stylesheet" href="/static/bot-customizer.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><desk-bot class="bot" name="header" size="32" aria-hidden="true"></desk-bot>{{DESK_NAME}}</div>
+    <input class="search" id="search" type="search" placeholder="Search people, issues, PRs" aria-label="Search conversations">
+    <div class="strip">
+      <div class="strip-txt" id="strip" aria-live="polite">Loading…</div>
+      <button class="switch" id="autopilot" type="button" role="switch" aria-checked="false" disabled><span class="switch-track" aria-hidden="true"></span>Autopilot</button>
+    </div>
+    <div class="top-actions">
+      <button class="btn btn-ink" id="check-now" type="button" title="Reads Gmail now, replies where it should, sends due release notes and closes what's done">Check now</button>
+      <div class="account">
+        <button class="account-trigger" id="account-trigger" type="button" aria-label="Account menu" aria-expanded="false" aria-controls="account-panel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M6 18c.6-3 2.6-4.5 6-4.5s5.4 1.5 6 4.5"/></svg>
+        </button>
+        <div class="account-panel" id="account-panel" hidden>
+          <button id="account-settings" type="button">Settings</button>
+          <button id="sign-out" type="button">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="banner" id="banner" role="status" hidden>
+    <span>The Claude command-line tool on this Mac is signed out, so the desk can't start sessions. Run this once in Terminal and sign in with your Claude account:</span>
+    <code id="banner-cmd">claude auth login</code>
+    <button class="btn btn-sm" id="banner-copy" type="button">Copy</button>
+  </div>
+
+  <nav class="side" aria-label="Views">
+    <ul class="views" id="views-top"></ul>
+    <p class="side-h">Conversations</p>
+    <ul class="views" id="views-conv"></ul>
+    <p class="side-h">Shipping</p>
+    <ul class="views" id="views-more"></ul>
+  </nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <section class="board" id="foryou" hidden></section>
+    <section class="list-pane" id="list-pane" hidden>
+      <ul class="list" id="list" role="listbox" aria-label="Conversations"></ul>
+      <div class="empty" id="list-empty" hidden><desk-bot size="72" name="list" gaze="down" aria-hidden="true"></desk-bot><p>Nothing here.</p></div>
+    </section>
+    <aside class="detail" id="detail" aria-label="Conversation" hidden></aside>
+    <section class="board" id="board" hidden></section>
+    <section class="board settings" id="settings" aria-labelledby="settings-heading" hidden>
+      <div class="board settings-body">
+      <header class="settings-heading">
+        <div><h1 id="settings-heading" tabindex="-1">Settings</h1><p>Make your desk companion your own.</p></div>
+        <button class="btn btn-quiet" id="bot-reset" type="button" disabled>Reset appearance</button>
+      </header>
+      <section class="bot-preset-section" aria-labelledby="bot-presets-heading">
+        <div class="bot-preset-heading"><div><h2 id="bot-presets-heading">Choose your companion</h2><p>Start with a look, then make it yours.</p></div><span id="bot-preset-status" role="status"></span></div>
+        <div class="bot-presets" id="bot-presets" role="group" aria-label="Bot presets"></div>
+      </section>
+      <section class="bot-preset-section" id="bot-saved-section" aria-labelledby="bot-saved-heading" hidden>
+        <div class="bot-preset-heading"><div><h2 id="bot-saved-heading">Your presets</h2><p>Saved on this browser. Select one to preview it.</p></div></div>
+        <div class="bot-presets" id="bot-saved-presets" role="group" aria-label="Saved bot presets"></div>
+      </section>
+      <div class="customizer-layout">
+        <section class="bot-preview-card" aria-label="Live bot preview">
+          <div class="preview-heading"><span>YOUR COMPANION</span><span class="preview-live">Live preview</span></div>
+          <div class="bot-preview-stage">
+            <desk-bot id="bot-preview" name="customizer" size="256" view="front" preview aria-label="Your customized desk companion"></desk-bot>
+          </div>
+          <div class="preview-views" id="bot-view-controls" role="group" aria-label="Preview angle">
+            <button type="button" data-bot-view="front" aria-pressed="true">Front</button>
+            <button type="button" data-bot-view="threeQuarter" aria-pressed="false">Three-quarter</button>
+            <button type="button" data-bot-view="profile" aria-pressed="false">Profile</button>
+          </div>
+          <div class="preview-expressions" id="bot-expression-controls" role="group" aria-label="Try an expression">
+            <button class="btn btn-sm btn-quiet" type="button" data-bot-expression="wink">Try a wink</button>
+            <button class="btn btn-sm btn-quiet" type="button" data-bot-expression="examine">Read below</button>
+            <button class="btn btn-sm btn-quiet" type="button" data-bot-expression="neutral" hidden>Reset pose</button>
+          </div>
+          <p class="preview-caption">A little personality for your everyday work.</p>
+          <p id="bot-preview-note" class="preview-note" hidden></p>
+        </section>
+        <section class="bot-controls-card" aria-label="Bot appearance controls">
+          <details class="frame-picker" open>
+            <summary>Glasses styles <span id="bot-frame-status"></span></summary>
+            <p>Pick a frame, then adjust its color and finish below.</p>
+            <div id="bot-frame-choices" class="frame-choices" role="group" aria-label="Glasses styles"></div>
+          </details>
+          <div id="bot-dials" aria-busy="true"><p class="customizer-loading">Loading customizer…</p></div>
+        </section>
+      </div>
+      </div>
+      <div class="bot-commit-bar">
+        <form id="bot-save-form" class="bot-save-form" hidden>
+          <label for="bot-preset-name">Preset name</label>
+          <div class="bot-save-fields"><input id="bot-preset-name" name="preset-name" maxlength="40" required autocomplete="off"><button class="btn btn-ink" type="submit">Save</button><button class="btn btn-quiet" id="bot-save-cancel" type="button">Cancel</button></div>
+        </form>
+        <p id="bot-save-error" role="alert" hidden></p>
+        <div class="bot-commit-row"><span id="bot-save-status" role="status">Choose a look to preview.</span><button class="btn btn-quiet" id="bot-discard" type="button" hidden>Discard preview</button><div class="bot-commit-actions"><button class="btn" id="bot-save-preset" type="button" disabled>Save preset</button><button class="btn btn-ink" id="bot-apply" type="button" disabled>Apply to desk</button></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="/static/bot-appearance.js"></script>
+<script src="/static/bot.js"></script>
+<script src="/static/app.js"></script>
+<script type="module" src="/static/bot-customizer.js"></script>
+</body>
+</html>

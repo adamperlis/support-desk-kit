@@ -1,0 +1,65 @@
+{
+  "_about": "Copy this file to config.json and fill it in. config.json is gitignored because it names your accounts. Nothing here is a secret: passwords and API keys never go in this file.",
+  "desk": {
+    "owner_name": "Alex",
+    "port": 4150,
+    "public_origin": "",
+    "code_dir": "~/code",
+    "use_case": "support",
+    "desk_name": "Support Desk",
+    "ticket_cap": 4,
+    "latitude": null,
+    "longitude": null
+  },
+  "support": {
+    "mailbox": "support@example.com",
+    "gmail_authuser": "support@example.com",
+    "composio_gmail_account": "gmail_your-connected-account-id",
+    "composio_workbench_tool": "mcp__claude_ai_Composio__COMPOSIO_REMOTE_WORKBENCH",
+    "our_domains": [
+      "example.com"
+    ],
+    "reply_signature": "Alex",
+    "label_prefix": "support",
+    "skip_domains": [],
+    "test_senders": [],
+    "crash_subjects": [],
+    "relay_senders": [],
+    "from_name": "Support"
+  },
+  "slack": {
+    "enabled": false,
+    "workspace": "your-workspace.slack.com",
+    "channel_id": "C0123456789",
+    "channel_name": "#bug-reports",
+    "owner_user_id": "U0123456789"
+  },
+  "github": {
+    "owner": "your-github-user"
+  },
+  "products": {
+    "Example App": {
+      "repo": "example-app",
+      "folder": "example-app",
+      "platform": ""
+    },
+    "Example Website": {
+      "repo": "example-web",
+      "folder": "example-web",
+      "platform": "Web"
+    }
+  },
+  "ticket_products": {
+    "Example": "example-app",
+    "Support desk": "support-desk-kit"
+  },
+  "autopilot": {
+    "pass_hours": [
+      8,
+      23
+    ],
+    "fix_cap": 3,
+    "tripwire_at": "10:00",
+    "digest_at": "10:15"
+  }
+}

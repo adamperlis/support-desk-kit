@@ -1,0 +1,92 @@
+{
+ "read_at": "2026-11-18T09:00:12Z",
+ "slack_read_ts": "1794913500.000300",
+ "conversations": [
+  {
+   "id": "1e00000000000001",
+   "first_name": "Maya",
+   "product": "Example App",
+   "issue": "CSV export gives a file with only the header row",
+   "status": "triaged",
+   "labels": ["bug", "acknowledged", "triaged"],
+   "last_activity": "2026-11-18T08:45Z",
+   "last_from": "us",
+   "threads": ["1e00000000000001"],
+   "prs": [],
+   "owed": "",
+   "needs_fix": true
+  },
+  {
+   "id": "1e00000000000002",
+   "first_name": "Jonas",
+   "product": "Example App",
+   "issue": "Asks whether the team plan includes single sign-on",
+   "status": "needs-owner",
+   "labels": ["needs-owner", "triaged"],
+   "last_activity": "2026-11-17T16:20Z",
+   "last_from": "customer",
+   "threads": ["1e00000000000002"],
+   "prs": [],
+   "owed": "Answer Jonas: does the team plan include single sign-on?",
+   "needs_fix": false
+  },
+  {
+   "id": "1e00000000000003",
+   "first_name": "Priya",
+   "product": "Example Website",
+   "issue": "Pricing page stays blank in Safari",
+   "status": "fix-in-review",
+   "labels": ["bug", "acknowledged", "fix-in-review", "triaged"],
+   "last_activity": "2026-11-16T11:02Z",
+   "last_from": "us",
+   "threads": ["1e00000000000003"],
+   "prs": ["example-web#41"],
+   "owed": "",
+   "needs_fix": false
+  },
+  {
+   "id": "1e00000000000004",
+   "first_name": "Sam",
+   "product": "Example App",
+   "issue": "Password reset email never arrived",
+   "status": "resolved",
+   "labels": ["bug", "acknowledged", "resolved", "triaged"],
+   "last_activity": "2026-11-14T19:30Z",
+   "last_from": "customer",
+   "threads": ["1e00000000000004", "1e00000000000006"],
+   "prs": ["example-app#37"],
+   "owed": "",
+   "needs_fix": false
+  },
+  {
+   "id": "1e00000000000005",
+   "first_name": "Lena",
+   "product": "Example App",
+   "issue": "Would like a dark mode",
+   "status": "triaged",
+   "labels": ["triaged"],
+   "last_activity": "2026-11-15T09:12Z",
+   "last_from": "us",
+   "threads": ["1e00000000000005"],
+   "prs": [],
+   "owed": "",
+   "needs_fix": false
+  },
+  {
+   "id": "5c0660762006fc64",
+   "source": "slack",
+   "slack": {"channel": "C0123456789", "ts": ["1794910320.000100", "1794911460.000200"]},
+   "first_name": "Chris",
+   "product": "Example App",
+   "issue": "Search ignores accented letters",
+   "status": "triaged",
+   "labels": ["bug"],
+   "last_activity": "2026-11-17T10:31Z",
+   "last_from": "us",
+   "threads": [],
+   "prs": [],
+   "owed": "",
+   "needs_fix": true
+  }
+ ]
+}

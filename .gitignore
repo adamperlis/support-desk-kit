@@ -1,0 +1,55 @@
+# Local credentials and machine-specific settings.
+.env
+.env.*
+!.env.example
+!*.env.example
+.dev.vars
+.dev.vars.*
+.npmrc
+.netrc
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+.cloudflare/
+.wrangler/
+**/.claude/settings.local.json
+
+# Local caches, logs, and process locks.
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+*.log
+*.tmp
+.*.lock
+
+# Customer data, drafted messages, and generated dashboard snapshots.
+/dashboard/conversations.json
+/dashboard/drafts.json
+/dashboard/notified.json
+/dashboard/passlog.json
+/dashboard/ship.json
+/dashboard/work.json
+/dashboard/server-deploy.json
+/dashboard/out/
+/dashboard/build/
+/dashboard/fastlane/report.xml
+/reports/
+
+# The running desk's state stays on this Mac.
+/desk/autopilot.json
+/desk/closed.json
+/desk/sessions.json
+/desk/tickets.json
+/desk/ticket-queue.json
+
+# Your own settings: names your accounts and products.
+/config.json

@@ -1,0 +1,30 @@
+[
+ {
+  "key": "example-web#41",
+  "conversation": "1e00000000000003",
+  "customer": "Priya",
+  "pr": "example-web#41",
+  "title": "Fix: pricing page blank in Safari (support)",
+  "pr_state": "open",
+  "merged_at": "",
+  "url": "https://example.com/your-github-user/example-web/pull/41",
+  "app": "Example Website",
+  "release_state": "open",
+  "release": "",
+  "release_note": "Not merged"
+ },
+ {
+  "key": "example-app#37",
+  "conversation": "1e00000000000004",
+  "customer": "Sam",
+  "pr": "example-app#37",
+  "title": "Fix: password reset email not sent for new accounts (support)",
+  "pr_state": "merged",
+  "merged_at": "2026-11-13",
+  "url": "https://example.com/your-github-user/example-app/pull/37",
+  "app": "Example App",
+  "release_state": "live",
+  "release": "",
+  "release_note": "Merged to main"
+ }
+]

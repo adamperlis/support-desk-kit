@@ -1,0 +1,10 @@
+{
+ "1e00000000000004|Example App||live": {
+  "state": "sent",
+  "at": "2026-01-14T10:00:00Z",
+  "by": "sample",
+  "prs": [
+   "example-app#37"
+  ]
+ }
+}
