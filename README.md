@@ -383,9 +383,15 @@ knows (`triaged`, `waiting-on-customer`, `needs-owner`, `fix-in-review`,
 
 ## Security model
 
-- **One owner password.**
+- **One owner password, and nothing works without it.**
+  - There's no default password and no setting that turns sign-in off. Until
+    one is set, the desk page sends you to set it up, and every API and action
+    answers 401.
   - It's set on the first visit, only over a direct local connection (from
-    `127.0.0.1` or `::1`, with no proxy headers).
+    `127.0.0.1` or `::1`, with no proxy headers). It must be at least 7
+    characters; a long passphrase is better if you open the desk to the web.
+  - Reached through a tunnel or any proxy before a password exists, the desk
+    shows as locked and refuses setup, so nobody else can claim it.
   - From anywhere else, the desk offers sign-in only.
   - It's stored as a salted scrypt hash in
     `~/Library/Application Support/support-desk/auth.sqlite3`, with owner-only
